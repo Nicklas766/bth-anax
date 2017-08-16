@@ -1,0 +1,59 @@
+
+/* Following CSS is if you would like to display images nicely with text
+-----------------------------------------------------------------------------*/
+.content {
+    background: black;
+}
+
+/* The entire widget for image and text */
+
+.content-widget {
+    background: #27a87e none repeat scroll 0 0;
+    color: white;
+    flex: 0 0 33.26%;
+    font-size: 1.5em;
+    height: 100%;
+    text-align: center;
+}
+
+.content-widget:first-child {
+    margin-right:0.1%
+}
+
+.content-widget:nth-child(2) {
+    margin-right:0.1%
+}
+.content-widget:hover {
+    box-shadow: inset 0 0 20px orange;
+}
+
+/* The image containers make sure the image is where we want it to be inside content-widget */
+
+.img-container {
+    border-top: 1px solid black;
+    height:300px;
+    background:white;
+}
+
+.imger {
+    background-color: #ff7043;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 80% 90%;
+    border: 4px solid #eee;
+    border-radius: 100%;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+
+    height: 200px;
+    margin: 24px auto;
+    opacity: 0.92;
+    transition: all 1s ease 0s;
+    width: 50%;
+}
+
+.img-container:hover .imger{
+    transition: 1s;
+    background-size: 90% 95%;
+    font-size:1.2em;
+    opacity: 1;
+}

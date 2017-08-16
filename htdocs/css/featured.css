@@ -1,0 +1,53 @@
+
+
+.featured-widget {
+     box-sizing: border-box;
+     flex: 0 0 100%;
+     margin: 40px auto 140px;
+     padding: 10px;
+     text-align: center;
+     transition: all 0.5s ease 0s;
+     font-size:1.15em;
+     color:white;
+
+}
+
+.featured-widget p {
+    margin-bottom:40px;
+}
+
+.featured-button {
+    background:none;
+    font-family: "Times New Roman", Times, serif;
+    border:solid 1px lightgray;
+    text-decoration:none;
+    padding: 10px;
+    border-radius:.3em;
+    transition:0.5s;
+    color:white;
+    font-size:1.3em;
+    cursor:pointer;
+}
+
+.featured-button:hover {
+    background:grey;
+    color:white;
+    font-size:1.35em;
+}
+
+
+/* Media queries for .widget */
+@media (max-width: 615px) {
+
+    .featured-widget {
+         flex: 0 0 70%;
+    }
+}
+
+/* Media queries for .widget */
+@media (max-width: 480px) {
+
+    .featured-widget {
+         font-size:0.9em;
+    }
+}

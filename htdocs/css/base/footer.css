@@ -1,0 +1,17 @@
+/* footer-wrapper */
+.footer-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:100%;
+    background: #04232D;
+    min-height:200px;
+    color:white;
+}
+
+.footer-widget {
+    width:33.3%;
+    text-align: center;
+    margin:auto;
+    font-size:1.5em;
+}

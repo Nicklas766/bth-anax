@@ -1,0 +1,276 @@
+
+/*Main parts*/
+@import url("base/base.css");
+@import url("base/header.css");
+@import url("base/news.css");
+/*@import url("base/flex.css");*/
+@import url("base/content.css");
+@import url("base/footer.css");
+
+/*Forms*/
+@import url("forms/edit.css");
+@import url("forms/login.css");
+
+/*Extra parts*/
+@import url("mediaqueries.css");
+@import url("featured.css");
+@import url("arrowdown.css");
+
+@import url('https://fonts.googleapis.com/css?family=Baloo');
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+body {
+    font-family: 'Luckiest Guy', cursive;
+}
+.flexTable {
+    width: 54.6%;
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.flexTable tr {
+    display:flex;
+    flex-wrap:wrap;
+    width: 100%;
+}
+
+.flexTable td {
+
+    width: 62.5%;
+    overflow:auto;
+
+}
+
+.flexTable th {
+    width: 30%;
+}
+/* Media queries for .widget */
+@media (max-width: 1499px) {
+    .flexTable {
+        width: 54%;
+    }
+    .flexTable td {
+
+        width: 100%;
+
+    }
+
+    .flexTable th {
+        width: 100%;
+    }
+
+    }
+
+.arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 30px;
+    margin: auto;
+    position:relative;
+    animation:vibrate2 0.7s infinite;
+    cursor:pointer;
+}
+
+.down {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.infoBar {
+    display: flex;
+    flex-direction: row;
+  flex-wrap: wrap;
+     transition: 1s;
+
+
+     margin: 0 auto 10px;
+     width: 60%;
+}
+
+
+td, th {
+    font-size: 15px;
+}
+th {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+table, td, th {
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+
+/*INFO about-page*/
+.info-widget {
+  padding: 5px;
+  flex: 0 0 70%;
+  margin: 24px auto;
+  color:white;
+  text-align: center;
+  border-radius: .5em;
+  background: #FF7043;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);
+}
+
+/*Popup*/
+.popup {
+  border-radius: 1em;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16), 0 1px 2px rgba(0, 0, 0, 0.23);
+  display: flex;
+  align-items: center;
+  margin: 0 auto 10px;
+  position:relative;
+  height:45px;
+  padding: 5px;
+
+  width: 85%;
+  animation:vibrate 0.4s infinite;
+
+}
+.popclose:hover {
+     background:white;
+     color:#07a5e7;
+}
+.popup:hover {
+     animation:none;
+}
+@keyframes vibrate {
+    0% {
+        top: 0;
+    }
+    25% {
+        top: -1.5px;
+    }
+    50% {
+        top: 0;
+    }
+    75% {
+        top: 1.5px;
+    }
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes vibrate2 {
+    0% {
+        top: 0;
+    }
+    25% {
+        top: -3px;
+    }
+    50% {
+        top: 0;
+    }
+    75% {
+        top: 3px;
+    }
+    100% {
+        top: 0;
+    }
+}
+.popup p {
+    font-family: Anton,sans-serif;
+    font-size: 24px;
+    margin: 0 auto;
+    overflow: visible;
+}
+/*den ska ligga på sidan, då ska popup vibrera*/
+.popclose {
+    background-color: #07a5e7;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      color: white;
+      position:absolute; right:-10px; top:-40px;
+      padding: 1.5px 7px;
+      cursor:pointer;
+
+    /*display: flex;
+    align-items: center;
+
+    cursor:pointer;
+    border-radius:2em;
+    border:1px solid white;
+    padding:5px;
+    margin-right:5%;*/
+
+}
+.popup p {
+
+    margin: 24px auto;
+
+}
+
+.popclose2 {
+    cursor:pointer;
+    background: #ff8900 none repeat scroll 0 0;
+    color: #fff;
+    float: left;
+    height: 100%;
+    width: 12.5%;
+}
+
+/*Popup*/
+.container {
+    margin:auto;
+    max-width:960px;
+    text-align:center;
+}
+h1 {
+
+}
+ul {
+    padding:0;
+}
+li {
+    list-style-type:none;
+}
+.languages {
+    display:flex;
+    justify-content: center;
+}
+
+.languages li {
+    margin: 10px;
+    font-weight:bold;
+    cursor: pointer;
+}
+
+.popular-rank {
+    font-size:20px;
+}
+.popular-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.popular-item {
+    margin: 20px;
+    text-align: center;
+}
+
+
+
+.space-list-items {
+    margin-bottom: 7px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+
+.active {
+    font-weight:bold;
+}
+
+.navbar-header .active {
+    font-size:1.6em;
+}

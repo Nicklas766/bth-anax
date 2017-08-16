@@ -1,0 +1,9 @@
+/* content-wrapper */
+.arrow-widget {
+    flex: 100%;
+    font-size:10em;
+    background: transparent;
+    text-align:center;
+    color:white;
+    margin-bottom:24px;
+}

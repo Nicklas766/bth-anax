@@ -1,0 +1,92 @@
+/* header login style */
+.login-button {
+    border:solid 1px white;
+    text-decoration:none;
+    padding: 10px;
+    border-radius:.3em;
+    transition:1s;
+    margin-left:20px;
+}
+
+.login-button:hover {
+    background:beige;
+    color:black;
+}
+
+/*login section styles*/
+.login-wrapper {
+    height: 100%;
+    flex: 0 0 100%;
+    text-align: center;
+    background: #113D47;
+    color: orange;
+    /*background-image: url('../../img/typing.jpg');*/
+    background-attachment: fixed;
+    min-height:900px;
+}
+
+@-webkit-keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.login-widget {
+    animation: fade-in 2s;
+    width:100%;
+    margin:auto;
+    text-align: center;
+    color: white;
+    font-size: 3em;
+    margin-top:24px;
+    max-width:600px;
+}
+.login-widget input {
+    border: 0 none;
+    background-color: white;
+    box-sizing: border-box;
+    color: #036;
+    font-size: 20px;
+    padding: 20px;
+    text-decoration: none;
+    width: 65%;
+    margin-bottom:24px;
+    transition:0.2s;
+}
+
+.login-widget textarea {
+  border: 0 none;
+  background-color: white;
+  box-sizing: border-box;
+  color: #036;
+  font-size: 12px;
+  padding: 20px;
+  text-decoration: none;
+  width: 65%;
+  margin-bottom:24px;
+  transition:0.2s;
+}
+
+.login-widget a {
+    color: orange;
+    font-size: 15px;
+}
+
+.login-widget input:focus,
+.login-widget button:hover,
+.login-widget textarea:focus {
+    box-shadow: inset 0 -1px 5px 1px rgba(0,0,0,0.75);
+}
+
+.login-widget button {
+    cursor:pointer;
+    border: 0 none;
+    background: orange;
+    border-radius: 0.25em;
+    box-shadow: 0 1px 0 rgba(24, 24, 24, 0.1);
+    box-sizing: border-box;
+    font-size: 25px;
+    padding: 10px;
+    width: 65%;
+    color:white;
+
+}
