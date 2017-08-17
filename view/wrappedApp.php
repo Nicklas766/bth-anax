@@ -32,7 +32,7 @@
     <?php endif; ?>
 
     <!-- If markdown exists create basic layout -->
-    <?php if ($this->regionHasContent("markdown")) : ?>
+    <!-- <?php if ($this->regionHasContent("markdown")) : ?>
         <div class='wrapper' style="background:#F0F0F0;">
             <div class="featured-widget" style="color:#009CE6; margin-bottom: 24px">
                   <h1> <?= $markdownTitle ?> </h1>
@@ -40,7 +40,7 @@
             <?php $this->renderRegion("markdown") ?>
             <div style="width:100%; margin-bottom:400px;" />
         </div>
-    <?php endif; ?>
+    <?php endif; ?> -->
 
     <?php if ($this->regionHasContent("footer")) : ?>
         <?php $this->renderRegion("footer") ?>

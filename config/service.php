@@ -12,6 +12,7 @@ $app->router     = new \Anax\Route\RouterInjectable();
 $app->view       = new \Anax\View\ViewContainer();
 $app->textfilter = new \Anax\TextFilter\TextFilter();
 $app->session    = new \Anax\Session\SessionConfigurable();
+$app->viewify    = new \Nicklas\Viewify\Viewify();
 
 // Configure request
 $app->request->init();

@@ -1,5 +1,8 @@
-<div class='wrapper' style="margin:0 auto 24px; width:51%; color:#009CE6">
-    <div style="background: lightblue; padding: 15px; width: 100%">
-        <?= $content ?>
-    </div>
+<div style="width: 100%;
+            margin-bottom: 24px;
+            padding: 15px;
+            color: <?= isset($color) ? $color : "#009CE6" ?>;
+            background: <?= isset($background) ? $background : "lightblue" ?>;
+            box-shadow:0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);">
+    <?= $content ?>
 </div>
