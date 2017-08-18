@@ -1,4 +1,4 @@
-<div style="width: 100%;
+<div class="report" style="width: 100%;
             margin-bottom: 24px;
             padding: 15px;
             color: <?= isset($color) ? $color : "#009CE6" ?>;

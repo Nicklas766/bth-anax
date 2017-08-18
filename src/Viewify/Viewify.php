@@ -8,17 +8,24 @@ class Viewify
     {
         // if multiple views create indexes for them
         if (is_array($data[0])) {
-            return array_map(function ($value) use ($data) {
-                return ["view" => $value, "content" => $data[1], "region" => $data[2]];
+            return array_map(function ($val) use ($data) {
+                return ["view" => $val, "content" => $data[1], "region" => $data[2]];
             }, $data[0]);
         }
-        // if multiple content create indexes for them
-        if (is_array($data[1]) && count($data[1]) > 2) {
-            return array_map(function ($value) use ($data) {
-                return ["view" => $data[0], "content" => $value, "region" => $data[2]];
+        // if multiple content (multideminsional) create indexes for them
+        if (array_key_exists(0, $data[1])) {
+            return array_map(function ($val) use ($data) {
+                return ["view" => $data[0], "content" => $val, "region" => $data[2]];
             }, $data[1]);
         }
         return [["view" => $data[0], "content" => $data[1], "region" => $data[2]]];
+    }
+
+    public function setArray($array, $key)
+    {
+        return array_map(function ($val) use ($key) {
+            return ["$key" => "$val"];
+        }, $array);
     }
 
     /**
@@ -28,6 +35,7 @@ class Viewify
     {
         foreach ($views as $views) {
             foreach ($this->add($views) as $view) {
+                // print_r($view["content"]);
                 $app->view->add($view["view"], $view["content"], $view["region"]);
             }
         }

@@ -32,27 +32,23 @@ $app->router->add("aboutPage", function () use ($app) {
 $app->router->add("report/**", function () use ($app) {
     // Get all after report/
     $path = substr($app->request->getRoute(), 7);
-    $filenames = ["kmom01", "kmom02", "kmom03", "kmom04", "kmom05", "kmom06", "kmom10"];
+    $files = ["report/kmom01", "report/kmom02", "report/kmom03", "report/kmom04", "report/kmom05", "report/kmom06", "report/kmom10"]; # default .md files to read
     $title = "Mina redovisningar";
+
+    // These filenames will be rendered as markdown as default
+    $content = array_map(function ($v) use ($app) {
+        return ["content" => $app->getMD("$v"), "background" => "#009CE6", "color" => "white"];
+    }, $files);
+
     if ($path != "") {
-        $files = ["content" => $app->getMD("report/$path"), "background" => "none"];
+        $content = ["content" => $app->getMD("report/$path"), "background" => "none"];
         $title = "Redovisning för $path";
     }
 
-    if ($path == "") {
-        // These filenames will be rendered as markdown as default
-        $files = array_map(function ($v) use ($app) {
-            return ["content" => $app->getMD("report/$v"), "background" => "#009CE6", "color" => "white"];
-        }, $filenames);
-    }
-    $link = array_map(function ($v) use ($app) {
-        return ["link" => "report/$v"];
-    }, $filenames);
-
     $app->renderPage([
         "views" => [
-            ["sidebar", $link, "sidebar"],
-            ["components/report", $files, "text"],
+            ["sidebar", $app->viewify->setArray($files, "link"), "sidebar"],
+            ["components/report", $content, "text"],
             ["reportWrapper", ["title" => "$title"], "main"]
         ],
         "title" => "Report"

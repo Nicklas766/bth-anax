@@ -32,7 +32,7 @@ class App
     public function renderPage($data, $status = 200)
     {
         // creates the views with viewify
-        $this->viewify->render($data["views"], $this);
+        array_key_exists("views", $data) && $this->viewify->render($data["views"], $this);
 
         $data["stylesheets"] = ["css/style.css"];
         $data["javascripts"] = ["js/index.js"];

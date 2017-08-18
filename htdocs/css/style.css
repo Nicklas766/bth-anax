@@ -21,44 +21,22 @@
 body {
     font-family: 'Luckiest Guy', cursive;
 }
-.flexTable {
-    width: 54.6%;
-    display:flex;
-    flex-wrap:wrap;
-}
 
-.flexTable tr {
-    display:flex;
-    flex-wrap:wrap;
-    width: 100%;
-}
-
-.flexTable td {
-
-    width: 62.5%;
+pre {
+    color:grey;
+    background:white;
+    border-radius: 0.5em;
+    padding: 15px;
     overflow:auto;
-
+}
+.report p {
+    font-family: 'Open Sans', sans-serif;
 }
 
-.flexTable th {
-    width: 30%;
+
+.report a {
+    color: orange;
 }
-/* Media queries for .widget */
-@media (max-width: 1499px) {
-    .flexTable {
-        width: 54%;
-    }
-    .flexTable td {
-
-        width: 100%;
-
-    }
-
-    .flexTable th {
-        width: 100%;
-    }
-
-    }
 
 .arrow {
     border: solid white;

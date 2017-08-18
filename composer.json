@@ -1,4 +1,7 @@
 {
+    "name": "anax/nicklas",
+    "description": "min-anax-sida",
+    "license": "MIT",
     "require": {
         "anax/request": "^1.0",
         "anax/url": "^1.0",

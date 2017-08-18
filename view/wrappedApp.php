@@ -7,6 +7,7 @@
     <?php foreach ($stylesheets as $stylesheet) : ?>
     <link rel="stylesheet" type="text/css" href="<?= $this->asset($stylesheet) ?>">
     <?php endforeach; ?>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
 </head>
 <body>
@@ -30,17 +31,6 @@
     <?php if ($this->regionHasContent("main")) : ?>
         <?php $this->renderRegion("main") ?>
     <?php endif; ?>
-
-    <!-- If markdown exists create basic layout -->
-    <!-- <?php if ($this->regionHasContent("markdown")) : ?>
-        <div class='wrapper' style="background:#F0F0F0;">
-            <div class="featured-widget" style="color:#009CE6; margin-bottom: 24px">
-                  <h1> <?= $markdownTitle ?> </h1>
-             </div>
-            <?php $this->renderRegion("markdown") ?>
-            <div style="width:100%; margin-bottom:400px;" />
-        </div>
-    <?php endif; ?> -->
 
     <?php if ($this->regionHasContent("footer")) : ?>
         <?php $this->renderRegion("footer") ?>
