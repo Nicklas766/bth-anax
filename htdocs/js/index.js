@@ -11,7 +11,6 @@ function myFunction() {
 window.onscroll = function() {myFunction();};
 
 $(document).ready(function() {
-
     $("#burger").click(function(event) {
         $("#burger").toggleClass("change");
         $(".wrap-all").toggleClass("move");

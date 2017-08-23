@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Python",
+        "fullName": "Programmering o Probleml\u00f6sning med Python-program",
+        "description": "Kursen Programmering och Probleml\u00f6sning i Python, a.k.a. python, l\u00e4r ut grunderna i strukturerad programmering och probleml\u00f6sning med programmerinsspr\u00e5ket Python.",
+        "language": "Python",
+        "grade": "C",
+        "link": null,
+        "img": "https:\/\/www.python.org\/static\/opengraph-icon-200x200.png"
+    },
+    {
+        "id": 2,
+        "name": "HTMLPHP",
+        "fullName": "Webbteknologier-program",
+        "description": "Kursen l\u00e4r ut webbutveckling d\u00e4r teknikerna HTML, CSS, PHP och SQL anv\u00e4nds f\u00f6r att tillsammans bygga en databasdriven webbplats.",
+        "language": "PHP",
+        "grade": "C",
+        "link": null,
+        "img": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/thumb\/2\/27\/PHP-logo.svg\/1200px-PHP-logo.svg.png"
+    },
+    {
+        "id": 3,
+        "name": "Javascript1",
+        "fullName": "Programmering med JavaScript",
+        "description": "Kursen l\u00e4r ut programmering och probleml\u00f6sning med programmerinsspr\u00e5ket JavaScript tillsammans med HTML och CSS i en webbmilj\u00f6.",
+        "language": "Javascript",
+        "grade": "A",
+        "link": "http:\/\/www.student.bth.se\/~nien16\/dbwebb-kurser\/javascript1\/me\/kmom10\/intelligence\/",
+        "img": "https:\/\/www.sololearn.com\/Icons\/Courses\/1024.png"
+    },
+    {
+        "id": 4,
+        "name": "Design",
+        "fullName": "Teknisk webbdesign och anv\u00e4ndbarhet",
+        "description": "Kursen l\u00e4r webbprogrammeraren att tekniskt f\u00f6rbereda sin webbplats f\u00f6r design och anv\u00e4ndbarhet.",
+        "language": "CSS",
+        "grade": "A",
+        "link": "http:\/\/www.student.bth.se\/~nien16\/dbwebb-kurser\/design\/me\/proj\/htdocs\/",
+        "img": "https:\/\/www.javatpoint.com\/csspages\/images\/css-tutorial.png"
+    },
+    {
+        "id": 5,
+        "name": "Linux",
+        "fullName": "Programmera webbtj\u00e4nster i Linux",
+        "description": "Kursen l\u00e4r ut programmering med JavaScript och Node.js p\u00e5 serversidan i en Linux-milj\u00f6 tillsammans med grunderna i operativsystemet Linux.",
+        "language": "BASH\/Javascript",
+        "grade": "A",
+        "link": null,
+        "img": "https:\/\/avatars3.githubusercontent.com\/u\/9950313?v=4&s=200"
+    },
+    {
+        "id": 6,
+        "name": "OOPython",
+        "fullName": "Objektorienterad design och programmering med Python",
+        "description": "Kursen l\u00e4r ut objektorienterad analys och design tillsammans med objektorienterad programmering med Python.",
+        "language": "Python",
+        "grade": "A",
+        "link": "http:\/\/www.student.bth.se\/~nien16\/dbwebb-kurser\/oopython\/me\/kmom10\/blackops\/",
+        "img": "https:\/\/www.python.org\/static\/opengraph-icon-200x200.png"
+    },
+    {
+        "id": 7,
+        "name": "Webapp",
+        "fullName": "Webbapplikationer f\u00f6r mobila enheter",
+        "description": "Kursen l\u00e4r dig hur du bygger applikationer f\u00f6r mobila enheter och l\u00e4splattor med HTML, CSS och JavaScript. Vi anv\u00e4nde javascript-ramverket Mithril och cordova f\u00f6r att skapa en webapp.",
+        "language": "Javascript",
+        "grade": "A",
+        "link": "http:\/\/www.student.bth.se\/~nien16\/dbwebb-kurser\/webapp\/me\/kmom10\/proj\/platforms\/browser\/www\/#!\/",
+        "img": "https:\/\/cdn.slant.co\/17b950f5-e0d5-4163-9977-28e70cfc81ca\/-\/format\/jpeg\/-\/progressive\/yes\/-\/preview\/480x480\/"
+    },
+    {
+        "id": 8,
+        "name": "OOPHP",
+        "fullName": "Objektorienterade webbteknologier",
+        "description": "Kursen fokuserar p\u00e5 objektorienterad programmering med PHP tillsammans med databasen MySQL.",
+        "language": "PHP\/SQL",
+        "grade": "A",
+        "link": "http:\/\/www.student.bth.se\/~nien16\/dbwebb-kurser\/oophp\/me\/kmom10\/anax-lite\/htdocs\/login",
+        "img": "https:\/\/c.martech.zone\/wp-content\/uploads\/2007\/10\/mysql-php-logos.png"
+    }
+]

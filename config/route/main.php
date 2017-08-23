@@ -9,55 +9,46 @@ $app->router->add("", function () use ($app) {
     ]);
 });
 
-$app->router->add("about", function () use ($app) {
+
+$app->router->add("comment/edit/{id:digit}", function ($id) use ($app) {
     $app->renderPage([
         "views" => [
-            ["components/report", ["content" => $app->getMD("about")], "text"],
-            ["reportWrapper", ["title" => "Om mig"], "main"],
+            ["comment/editComment", ["comment" => $app->comment->getComment($id)], "main"]
         ],
-        "title" => "Om mig"
+        "title" => "Edit Comment #$id"
     ]);
 });
 
-$app->router->add("aboutPage", function () use ($app) {
+$app->router->add("comments", function () use ($app) {
     $app->renderPage([
         "views" => [
-            ["components/report", ["content" => $app->getMD("aboutPage")], "text"],
-            ["reportWrapper", ["title" => "Hur är denna hemsida skapad?"], "main"]
+            ["comment/commentField", ["comments" => $app->comment->getComments()], "main"],
+            ["comment/makeComment", [], "main"],
         ],
-        "title" => "Om sidan"
+        "title" => "Comments"
     ]);
 });
 
-$app->router->add("report/**", function () use ($app) {
-    // Get all after report/
-    $path = substr($app->request->getRoute(), 7);
-    $files = ["report/kmom01", "report/kmom02", "report/kmom03", "report/kmom04", "report/kmom05", "report/kmom06", "report/kmom10"]; # default .md files to read
-    $title = "Mina redovisningar";
+$app->router->post("comment", [$app->commentController, "postComment"]);
+$app->router->post("comment/update", [$app->commentController, "updateComment"]);
+$app->router->get("comment/delete", [$app->commentController, "deleteComment"]);
 
-    // These filenames will be rendered as markdown as default
-    $content = array_map(function ($v) use ($app) {
-        return ["content" => $app->getMD("$v"), "background" => "#009CE6", "color" => "white"];
-    }, $files);
+// $app->router->add("comments", [$app->comment, "anyPrepare"]);
 
-    if ($path != "") {
-        $content = ["content" => $app->getMD("report/$path"), "background" => "none"];
-        $title = "Redovisning för $path";
-    }
+// $app->router->get("remserver/api/init", [$app->remController, "anyInit"]);
+//
+// /** Destroy the session. */
+// $app->router->get("remserver/api/destroy", [$app->remController, "anyDestroy"]);
+//
+// /** Get the dataset or parts of it. */
+// $app->router->get("remserver/api/{dataset:alphanum}", [$app->remController, "getDataset"]);
+//
+// /** Get one item from the dataset. */
+// $app->router->get("remserver/api/{dataset:alphanum}/{id:digit}", [$app->remController, "getItem"]);
 
-    $app->renderPage([
-        "views" => [
-            ["sidebar", $app->viewify->setArray($files, "link"), "sidebar"],
-            ["components/report", $content, "text"],
-            ["reportWrapper", ["title" => "$title"], "main"]
-        ],
-        "title" => "Report"
-    ]);
-});
 
 
 $app->router->add("test", function () use ($app) {
-
     $app->renderPage([
         "title" => "Info",
         "pages" => "page/home/greeting, page/home/content, page/home/content2",

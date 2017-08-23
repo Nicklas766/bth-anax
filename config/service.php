@@ -13,6 +13,20 @@ $app->view       = new \Anax\View\ViewContainer();
 $app->textfilter = new \Anax\TextFilter\TextFilter();
 $app->session    = new \Anax\Session\SessionConfigurable();
 $app->viewify    = new \Nicklas\Viewify\Viewify();
+// Add the REM server
+$app->rem           = new \Anax\RemServer\RemServer();
+$app->remController = new \Anax\RemServer\RemServerController();
+
+// Add the comment classes
+$app->comment       = new \Nicklas\Comment\Comment();
+$app->commentController = new \Nicklas\Comment\CommentController();
+
+// textfilter dependency for comment
+$app->comment->textfilter = $app->textfilter;
+
+// Init controller for the comment
+$app->commentController->setApp($app);
+
 
 // Configure request
 $app->request->init();
@@ -35,6 +49,13 @@ $app->url->setDefaultsFromConfiguration();
 // Configure view
 $app->view->setApp($app);
 $app->view->configure("view.php");
+
+// Init REM Server
+$app->rem->configure("remserver.php");
+$app->rem->inject(["session" => $app->session]);
+
+// Init controller for the REM Server
+$app->remController->setApp($app);
 
 // Return the populated $app
 return $app;

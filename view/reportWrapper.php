@@ -3,7 +3,7 @@
 
 <div class='wrapper' style="background:#F0F0F0;">
     <div class="featured-widget" style="color:#009CE6; margin-bottom: 24px">
-        <h1> <?= $title ?> </h1>
+        <h1> <?= $header ?> </h1>
     </div>
 
     <?php if ($this->regionHasContent("sidebar")) : ?>
