@@ -11,6 +11,10 @@
 @import url("forms/edit.css");
 @import url("forms/login.css");
 
+/*Forms*/
+@import url("profile/profile.css");
+@import url("profile/admin.css");
+
 /*Extra parts*/
 @import url("mediaqueries.css");
 @import url("featured.css");
@@ -109,7 +113,8 @@ td, th {
 th {
     background-color: #333;
     color: #fff;
-    padding: 10px;
+    padding: 20px;
+    width:100px;
 }
 table, td, th {
     border: 1px solid #ddd;
@@ -241,51 +246,7 @@ flex-wrap: wrap;
     max-width:960px;
     text-align:center;
 }
-h1 {
 
-}
-ul {
-    padding:0;
-}
-li {
-    list-style-type:none;
-}
-.languages {
-    display:flex;
-    justify-content: center;
-}
-
-.languages li {
-    margin: 10px;
-    font-weight:bold;
-    cursor: pointer;
-}
-
-.popular-rank {
-    font-size:20px;
-}
-.popular-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.popular-item {
-    margin: 20px;
-    text-align: center;
-}
-
-
-
-.space-list-items {
-    margin-bottom: 7px;
-}
-
-.avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
 
 
 .active {

@@ -1,0 +1,150 @@
+/* Basic wrapper that will be used to wrap the chosen part of site */
+.profile-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height:100%;
+    min-height: 900px;
+    background: #F24236;
+    color:white;
+    box-shadow: inset 0 0 20px black;
+}
+
+.profile-wrapper h1 {
+    margin:auto;
+    width:100%;
+    text-align:center;
+    color: black;
+}
+
+
+/* The entire widget for image and text */
+
+.avatar-widget {
+    background: white;
+    color: #4A4757;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 30%;
+    margin: 50px auto;
+    height: 100%;
+    text-align: center;
+    box-shadow: 1px 1px 5px black;
+}
+
+
+.avatar {
+    width:100%;
+    height:100%;
+}
+
+.avatar-header {
+    width:100%;
+    height:25px;
+    text-align:left;
+    color:black;
+    display: inline-flex;
+    vertical-align: middle;
+    font-family: "Open Sans",sans-serif;
+}
+
+.avatar img {
+    margin:10px auto;
+    border-radius: 50%;
+    width:150px;
+    height:100%;
+}
+
+.avatar-info {
+    width:100%;
+    border-bottom:1px solid;
+}
+
+.avatar-commands {
+    width:100%;
+    display:flex;
+}
+
+.avatar-commands a {
+    width:50%;
+    min-height:50px;
+    color: #F24236;
+}
+
+.avatar-commands a:hover {
+    color: black;
+}
+
+.avatar-commands a:first-child {
+    border-right:solid black;
+}
+
+
+.avatar-commands i {
+    font-size:3em;
+}
+
+
+.avatar-widget form {
+    display:flex;
+    background:white;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.avatar-widget input {
+    width:100%;
+
+    border:1px solid;
+}
+
+
+.avatar-widget button {
+    width:50%;
+    border:1px solid;
+}
+
+
+
+.content {
+    background: black;
+}
+
+
+
+
+.content-widget:hover {
+    box-shadow: inset 0 0 20px orange;
+}
+
+/* The image containers make sure the image is where we want it to be inside content-widget */
+
+.img-container {
+    height:300px;
+    background:white;
+}
+
+.imger {
+    background-color: #ff7043;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 80% 90%;
+    border-radius: 100%;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+
+    height: 200px;
+    margin: 24px auto;
+    opacity: 0.92;
+    transition: all 1s ease 0s;
+    width: 50%;
+}
+
+.img-container:hover .imger{
+    transition: 1s;
+    background-size: 90% 95%;
+    font-size:1.2em;
+    opacity: 1;
+}

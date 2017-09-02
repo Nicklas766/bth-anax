@@ -2,108 +2,113 @@
 
 namespace Nicklas\Comment;
 
-use \Anax\Configure\ConfigureInterface;
-use \Anax\Configure\ConfigureTrait;
 use \PDO;
 
 /**
- * Comment data.
+ * Comment  module
  */
-class Comment implements ConfigureInterface
+class Comment extends User
 {
-    use ConfigureTrait;
 
-    protected $db;
+    public $cTable = "ramverk1_comments"; # comment cTable here
 
-    public $table = "ramverk1_comment"; # table name goes here
-    // public $tableRows; # table columns
 
     /**
-    * Constructor
-    */
-    public function __construct()
-    {
-
-        // Studentserver
-        $databaseConfig = [
-            "dsn"      => "mysql:host=xxx;dbname=xxx",
-            "login"    => "xxx",
-            "password" => "xxx",
-            "options"  => [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"],
-        ];
-        // // local development
-        // $databaseConfig = [
-        //     "dsn"      => "mysql:host=localhost;dbname=commentify",
-        //     "login"    => "user",
-        //     "password" => "pass",
-        //     "options"  => [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"],
-        // ];
-        try {
-            $db = new PDO(...array_values($databaseConfig));
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->db = $db;
-        } catch (PDOException $e) {
-            print "Error!: " . $e->getMessage() . "<br/>";
-            throw new PDOException("Could not connect to database, hiding details.");
-        }
-        // $this->tableRows = $this->fetchArray("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='$this->table'");
-        // get POSTs based on tablerow names
-    }
-
-    // Insert post into comments
+     * Insert new comment based on session user
+     *
+     * @param array $posts
+     *
+     * @return void
+     */
     public function postComment($posts)
     {
-        $this->execute("INSERT INTO $this->table (email, comment) VALUES (?, ?)", $posts);
+        if ($this->di->get('session')->has("user")) {
+            $posts[] = $this->di->get('session')->get("user");
+            $this->execute("INSERT INTO $this->cTable (comment, user_name) VALUES (?, ?)", $posts);
+        }
     }
 
-    // delete comment based on id
+
+
+    /**
+     * Deletes comment
+     *
+     * @param int $id
+     *
+     * @return void
+     */
     public function deleteComment($id)
     {
-        $this->execute("DELETE FROM $this->table WHERE id = :id", ["id" => $id]);
+        $this->execute("DELETE FROM $this->cTable WHERE id = :id", ["id" => $id]);
     }
 
-    // update based on id
+
+
+    /**
+     * Updates comment with certain order
+     *
+     * @param array $posts
+     *
+     * @return void
+     */
     public function updateComment($posts)
     {
-        $this->execute("UPDATE $this->table SET email = ?, comment = ? WHERE id = ?", $posts);
+        $this->execute("UPDATE $this->cTable SET comment = ? WHERE id = ?", $posts);
     }
 
-    public function execute($sql, $sqlParams = null)
+
+
+    /**
+     * Check if comment belongs to user
+     *
+     * @param int $id
+     *
+     * @return boolean true if comment made by user, else false
+     */
+    public function isUsersComment($id)
     {
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute($sqlParams);
+        $userName = $this->di->get('session')->get("user");
+
+        if ($this->isUserAdmin($userName)) {
+            return true;
+        }
+
+        $comment = $this->fetch("SELECT * FROM $this->cTable WHERE user_name = :name AND id = :id", ["name" => $userName, "id" => $id]);
+        return !$comment ? false : true;
     }
 
-    // returns all comments
+
+
+    /**
+     * Get all comments from Database
+     *
+     * @return array with all comments
+     */
     public function getComments()
     {
-        $stmt = $this->db->prepare("SELECT * FROM $this->table");
-        $stmt->execute();
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data = $this->fetchAll("SELECT * FROM $this->cTable");
         foreach ($data as $k => $comment) {
-            $data[$k]["img"] = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment["email"]))) . "&s=" . 40;
-            $data[$k]["markdown"] = $this->textfilter->parse($comment["comment"], ["yamlfrontmatter", "shortcode", "markdown", "titlefromheader"])->text;
+            $user = $this->getUser($comment["user_name"]);
+            $data[$k]["img"] = $this->gravatar($user["email"]);
+            $data[$k]["markdown"] = $this->getMD($comment["comment"]);
         }
-        return $data;
+        $user = $this->di->get('session')->get("user");
+        return ["comments" => $data, "user" => $user];
     }
 
-    // update based on id
+
+
+    /**
+     * Get one comment from the database
+     *
+     * @param int $id for which comment
+     *
+     * @return array with the comment
+     */
     public function getComment($id)
     {
-        //fetch
-        $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE id = :id");
-        $stmt->execute(["id" => $id]);
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
-        // parse
-        $data["markdown"] = $this->textfilter->parse($data["comment"], ["yamlfrontmatter", "shortcode", "markdown", "titlefromheader"])->text;
-        return $data;
-    }
-
-    // get res with one fetch
-    public function fetchArray($sql)
-    {
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+        $comment = $this->fetch("SELECT * FROM $this->cTable WHERE id = :id", ["id" => $id]);
+        $comment["markdown"] = $this->getMD($comment["comment"]);
+        return $comment;
     }
 }

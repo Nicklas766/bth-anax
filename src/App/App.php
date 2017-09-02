@@ -20,12 +20,6 @@ class App
         return $this->url->create($url);
     }
 
-    // Get content->text from markdown file
-    public function getMD($file)
-    {
-        $content = file_get_contents(ANAX_INSTALL_PATH . "/content/$file.md");
-        return $this->textfilter->parse($content, ["yamlfrontmatter", "shortcode", "markdown", "titlefromheader"])->text;
-    }
     /**
      * Render a standard web page using a specific layout.
      */

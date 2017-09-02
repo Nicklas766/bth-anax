@@ -40,7 +40,8 @@
     margin-top:24px;
     max-width:600px;
 }
-.login-widget input {
+.login-widget input,
+.login-widget select {
     border: 0 none;
     background-color: white;
     box-sizing: border-box;
@@ -52,6 +53,8 @@
     margin-bottom:24px;
     transition:0.2s;
 }
+
+
 
 .login-widget textarea {
   border: 0 none;

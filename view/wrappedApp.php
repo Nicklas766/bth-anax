@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="<?= $this->asset($stylesheet) ?>">
     <?php endforeach; ?>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 <body>
@@ -22,8 +23,9 @@
     <a href="<?= $app->link('report') ?>">Report</a>
     <a href="<?= $app->link('aboutPage') ?>">Om sidan</a>
     <a href="<?= $app->link('article/mvc') ?>">MVC-Artikel</a>
+    <a href="<?= $app->link('article/di') ?>">DI-Artikel</a>
     <a href="<?= $app->link('remserver') ?>">Remserver</a>
-    <a href="<?= $app->link('comments') ?>">Comment</a>
+    <a href="<?= $app->link('comment') ?>">Comment</a>
 </div>
 
 <div class="wrap-all">

@@ -9,7 +9,15 @@
                 <a href="<?= $app->link('') ?>">Home</a>
                 <a href="<?= $app->link('about') ?>">Om mig</a>
                 <a href="<?= $app->link('report') ?>">Report</a>
-                <a class="login-button" href="">Login</a>
+
+                <!-- logic only for being able to show correct -->
+                <?php if ($app->session->has('user')) : ?>
+                    <a class="login-button" href="<?= $app->link('user/profile') ?>">Profil</a>
+                <?php endif; ?>
+                <?php if (!$app->session->has('user')) : ?>
+                    <a class="login-button" href="<?= $app->link('user/login') ?>">Login</a>
+                <?php endif; ?>
+
             </div>
 
              <!-- Hamburger for header -->

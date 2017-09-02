@@ -17,6 +17,31 @@ return [
             "file" => __DIR__ . "/route2/debug.php",
         ],
         [
+            // Routers for the REM server mounts on api/
+            "mount" => "remserver/api",
+            "file" => __DIR__ . "/route2/remserver.php",
+        ],
+        [
+            // Routers for the reports
+            "mount" => "report",
+            "file" => __DIR__ . "/route2/report.php",
+        ],
+        [
+            // Routers for the comment mounts on comment/
+            "mount" => "comment",
+            "file" => __DIR__ . "/route2/comment/comment.php",
+        ],
+        [
+            // Routers for the user parts mounts on user/
+            "mount" => "user",
+            "file" => __DIR__ . "/route2/comment/user.php",
+        ],
+        [
+            // Routers for the admin parts mounts on admin/
+            "mount" => "admin",
+            "file" => __DIR__ . "/route2/comment/admin.php",
+        ],
+        [
             // To read flat file content in Markdown from content/
             "mount" => null,
             "file" => __DIR__ . "/route2/flat-file-content.php",

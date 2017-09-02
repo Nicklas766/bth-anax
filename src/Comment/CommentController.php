@@ -2,47 +2,119 @@
 
 namespace Nicklas\Comment;
 
-use \Anax\Common\AppInjectableInterface;
-use \Anax\Common\AppInjectableTrait;
+use \Anax\DI\InjectionAwareInterface;
+use \Anax\DI\InjectionAwareTrait;
 
 /**
- * A controller for the REM Server.
+ * A controller for the Comment
  *
- * @SuppressWarnings(PHPMD.ExitExpression)
  */
-class CommentController implements AppInjectableInterface
+class CommentController implements InjectionAwareInterface
 {
-    use AppInjectableTrait;
+    use InjectionAwareTrait;
     public $posts;
-    public $gets;
 
     public function __construct()
     {
         $this->posts = array_map(function ($val) {
             return isset($_POST[$val]) ? htmlentities($_POST[$val]) : "";
-        }, ["email", "comment"]);
+        }, ["comment"]);
     }
+
+
+
+    /**
+     * use response and url dependencies to create rediret
+     *
+     * @return void
+     */
+    private function redirect($url)
+    {
+        $this->di->get("response")->redirect($this->di->get("url")->create($url));
+    }
+
+
+
+    /**
+     * Control if user is allowed to edit comment
+     *
+     * @return void
+     */
+    public function controlUser($id)
+    {
+        if (!$this->di->get("comment")->isUsersComment($id)) {
+            $this->di->get("pageRender")->renderPage([
+                "views" => [
+                    ["user/authorityFail", [], "main"]
+                ],
+                "title" => "Fail comment #$id"
+            ]);
+        }
+    }
+
+
 
     // Insert post into comments
     public function postComment()
     {
-        $this->app->comment->postComment($this->posts);
-        $this->app->redirect("comments");
+        $this->di->get("comment")->postComment($this->posts);
+        $this->redirect("comment");
     }
+
+
 
     // delete comment based on id
-    public function deleteComment()
+    public function deleteComment($id)
     {
-        $id = $_GET["id"];
-        $this->app->comment->deleteComment($id);
-        $this->app->redirect("comments");
+        $this->di->get("comment")->deleteComment($id);
+        $this->redirect("comment");
     }
 
+
+
     // update based on id
-    public function updateComment()
+    public function updateComment($id)
     {
-        $this->posts[] = $_GET["id"];
-        $this->app->comment->updateComment($this->posts);
-        $this->app->redirect("comment/edit/$_GET[id]");
+        $this->posts[] = $id;
+        $this->di->get("comment")->updateComment($this->posts);
+        $this->redirect("comment/edit/$id");
+    }
+
+
+
+    /**
+     * Render all comments, submit form if logged in
+     *
+     * @return void
+     */
+    public function renderComments()
+    {
+        $view = "comment/makeComment";
+        !$this->di->get("session")->has("user") && $view = "comment/loginComment";
+
+        $this->di->get("pageRender")->renderPage([
+            "views" => [
+                ["comment/commentField", ["data" => $this->di->get("comment")->getComments()], "main"],
+                ["$view", [], "main"]
+            ],
+            "title" => "Comments"
+        ]);
+    }
+
+
+
+    /**
+     * Render one comment
+     *
+     * @return void
+     */
+    public function renderComment($id)
+    {
+        $this->di->get("pageRender")->renderPage([
+            "views" => [
+                ["comment/editComment", ["comment" => $this->di->get("comment")->getComment($id)], "main"]
+            ],
+            "title" => "Edit Comment #$id"
+        ]);
     }
 }
