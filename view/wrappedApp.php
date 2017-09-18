@@ -22,6 +22,7 @@
     <a href="<?= $app->link('about') ?>">Om mig</a>
     <a href="<?= $app->link('report') ?>">Report</a>
     <a href="<?= $app->link('aboutPage') ?>">Om sidan</a>
+    <a href="<?= $app->link('book') ?>">Book</a>
     <a href="<?= $app->link('article/mvc') ?>">MVC-Artikel</a>
     <a href="<?= $app->link('article/di') ?>">DI-Artikel</a>
     <a href="<?= $app->link('remserver') ?>">Remserver</a>

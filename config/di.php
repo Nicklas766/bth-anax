@@ -16,7 +16,12 @@ return [
         ],
         "response" => [
             "shared" => true,
-            "callback" => "\Anax\Response\Response",
+            //"callback" => "\Anax\Response\Response",
+            "callback" => function () {
+                $obj = new \Anax\Response\ResponseUtility();
+                $obj->setDI($this);
+                return $obj;
+            }
         ],
         "url" => [
             "shared" => true,
@@ -129,52 +134,76 @@ return [
                 return $rem;
             }
         ],
-        "comment" => [
-            "shared" => true,
-            "callback" => function () {
-                $comment = new \Nicklas\Comment\Comment();
-                $comment->setDI($this);
-                return $comment;
-            }
-        ],
-        "commentController" => [
-            "shared" => false,
-            "callback" => function () {
-                $commentController = new \Nicklas\Comment\CommentController();
-                $commentController->setDI($this);
-                return $commentController;
-            }
-        ],
-        "user" => [
-            "shared" => true,
-            "callback" => function () {
-                $user = new \Nicklas\Comment\User();
-                $user->setDI($this);
-                return $user;
-            }
-        ],
+        // "comment" => [
+        //     "shared" => true,
+        //     "callback" => function () {
+        //         $comment = new \Nicklas\Comment\Comment();
+        //         $comment->setDI($this);
+        //         return $comment;
+        //     }
+        // ],
+        // "commentController" => [
+        //     "shared" => false,
+        //     "callback" => function () {
+        //         $commentController = new \Nicklas\Comment\CommentController();
+        //         $commentController->setDI($this);
+        //         return $commentController;
+        //     }
+        // ],
+        // "user" => [
+        //     "shared" => true,
+        //     "callback" => function () {
+        //         $user = new \Nicklas\Comment\User();
+        //         $user->setDI($this);
+        //         return $user;
+        //     }
+        // ],
+        // "userController" => [
+        //     "shared" => false,
+        //     "callback" => function () {
+        //         $userController = new \Nicklas\Comment\UserController();
+        //         $userController->setDI($this);
+        //         return $userController;
+        //     }
+        // ],
+        // "userActionController" => [
+        //     "shared" => false,
+        //     "callback" => function () {
+        //         $userActionController = new \Nicklas\Comment\UserActionController();
+        //         $userActionController->setDI($this);
+        //         return $userActionController;
+        //     }
+        // ],
+        // "adminController" => [
+        //     "shared" => false,
+        //     "callback" => function () {
+        //         $adminController = new \Nicklas\Comment\AdminController();
+        //         $adminController->setDI($this);
+        //         return $adminController;
+        //     }
+        // ],
         "userController" => [
-            "shared" => false,
+            "shared" => true,
             "callback" => function () {
-                $userController = new \Nicklas\Comment\UserController();
-                $userController->setDI($this);
-                return $userController;
+                $obj = new \Nicklas\Comment2\User\UserController();
+                $obj->setDI($this);
+                return $obj;
             }
         ],
-        "userActionController" => [
-            "shared" => false,
+        "db" => [
+            "shared" => true,
             "callback" => function () {
-                $userActionController = new \Nicklas\Comment\UserActionController();
-                $userActionController->setDI($this);
-                return $userActionController;
+                $obj = new \Anax\Database\DatabaseQueryBuilder();
+                $obj->configure("database.php");
+                return $obj;
             }
         ],
-        "adminController" => [
-            "shared" => false,
+        "bookController" => [
+            "shared" => true,
             "callback" => function () {
-                $adminController = new \Nicklas\Comment\AdminController();
-                $adminController->setDI($this);
-                return $adminController;
+                $obj = new \Anax\Book\BookController();
+                $obj->setDI($this);
+                return $obj;
             }
         ],
     ],

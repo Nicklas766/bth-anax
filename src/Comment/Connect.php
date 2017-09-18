@@ -24,9 +24,9 @@ class Connect implements InjectionAwareInterface
     {
         // local development
         $databaseConfig = [
-            "dsn"      => "mysql:host=blu-ray.student.bth.se;dbname=nien16",
-            "login"    => "nien16",
-            "password" => "J9c84xWzsF5o",
+            "dsn"      => "mysql:host=xxx;dbname=xx",
+            "login"    => "xxx",
+            "password" => "xxx",
             "options"  => [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"],
         ];
         try {

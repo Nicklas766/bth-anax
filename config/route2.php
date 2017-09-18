@@ -26,20 +26,31 @@ return [
             "mount" => "report",
             "file" => __DIR__ . "/route2/report.php",
         ],
-        [
-            // Routers for the comment mounts on comment/
-            "mount" => "comment",
-            "file" => __DIR__ . "/route2/comment/comment.php",
-        ],
+        // [
+        //     // Routers for the comment mounts on comment/
+        //     "mount" => "comment",
+        //     "file" => __DIR__ . "/route2/comment/comment.php",
+        // ],
+        // [
+        //     // Routers for the user parts mounts on user/
+        //     "mount" => "user",
+        //     "file" => __DIR__ . "/route2/comment/user.php",
+        // ],
+        // [
+        //     // Routers for the admin parts mounts on admin/
+        //     "mount" => "admin",
+        //     "file" => __DIR__ . "/route2/comment/admin.php",
+        // ],
+
         [
             // Routers for the user parts mounts on user/
             "mount" => "user",
-            "file" => __DIR__ . "/route2/comment/user.php",
+            "file" => __DIR__ . "/route2/comment2/userController.php",
         ],
         [
-            // Routers for the admin parts mounts on admin/
-            "mount" => "admin",
-            "file" => __DIR__ . "/route2/comment/admin.php",
+            // Add routes from bookController and mount on book/
+            "mount" => "book",
+            "file" => __DIR__ . "/route2/bookController.php",
         ],
         [
             // To read flat file content in Markdown from content/
