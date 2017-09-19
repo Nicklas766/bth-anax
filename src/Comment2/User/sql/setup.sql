@@ -16,7 +16,7 @@ CREATE TABLE `ramverk1_users`
 (
   `id` INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   `name` VARCHAR(100) NOT NULL UNIQUE,
-  `email` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100),
   `pass` VARCHAR(255) NOT NULL,
   `authority` VARCHAR(255) NOT NULL
 ) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;
@@ -25,10 +25,10 @@ CREATE TABLE `ramverk1_users`
 CREATE TABLE `ramverk1_comments`
 (
   `id` INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  `user_name` VARCHAR(100) NOT NULL,
+  `user` VARCHAR(100) NOT NULL,
   `comment` text,
 
-  FOREIGN KEY (`user_name`) REFERENCES `ramverk1_users` (`name`)
+  FOREIGN KEY (`user`) REFERENCES `ramverk1_users` (`name`)
 ) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;
 
 

@@ -182,10 +182,10 @@ return [
         //         return $adminController;
         //     }
         // ],
-        "userController" => [
+        "commentFrontController" => [
             "shared" => true,
             "callback" => function () {
-                $obj = new \Nicklas\Comment2\User\UserController();
+                $obj = new \Nicklas\Comment2\User\FrontController();
                 $obj->setDI($this);
                 return $obj;
             }

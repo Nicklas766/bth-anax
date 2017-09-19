@@ -23,19 +23,22 @@ class UserLoginForm extends FormModel
         $this->form->create(
             [
                 "id" => __CLASS__,
-                "legend" => "User Login"
             ],
             [
                 "user" => [
                     "type"        => "text",
                     //"description" => "Here you can place a description.",
-                    //"placeholder" => "Here is a placeholder",
+                    "placeholder" => "Användarnamn",
+                    "validation" => ["not_empty"],
+                    "label" => false
                 ],
 
                 "password" => [
                     "type"        => "password",
                     //"description" => "Here you can place a description.",
-                    //"placeholder" => "Here is a placeholder",
+                    "placeholder" => "Lösenord",
+                    "validation" => ["not_empty"],
+                    "label" => false
                 ],
 
                 "submit" => [
@@ -71,7 +74,7 @@ class UserLoginForm extends FormModel
             return false;
         }
 
-        $this->form->addOutput("User " . $user->name . " logged in.");
-        return true;
+        $this->di->get('session')->set("user", $name); # set user in session
+        $this->di->get("response")->redirect("user/profile");
     }
 }

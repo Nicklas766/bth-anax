@@ -27,10 +27,16 @@ class CreateUserForm extends FormModel
             [
                 "name" => [
                     "type"        => "text",
+                    "validation" => ["not_empty"]
+                ],
+
+                "email" => [
+                    "type"        => "text",
                 ],
 
                 "password" => [
                     "type"        => "password",
+                    "validation" => ["not_empty"]
                 ],
 
                 "password-again" => [
@@ -60,7 +66,8 @@ class CreateUserForm extends FormModel
     public function callbackSubmit()
     {
         // Get values from the submitted form
-        $acronym       = $this->form->value("acronym");
+        $name       = $this->form->value("name");
+        $email       = $this->form->value("email");
         $password      = $this->form->value("password");
         $passwordAgain = $this->form->value("password-again");
 
@@ -71,19 +78,25 @@ class CreateUserForm extends FormModel
             return false;
         }
 
-        // Save to database
-          // $db = $this->di->get("db");
-          // $password = password_hash($password, PASSWORD_DEFAULT);
-          // $db->connect()
-          //    ->insert("User", ["acronym", "password"])
-          //    ->execute([$acronym, $password]);
-          $user = new User();
-          $user->setDb($this->di->get("db"));
-          $user->acronym = $acronym;
+        if (strpos($name, '%') !== false) {
+            $this->form->addOutput("% is not allowed");
+            return false;
+        }
+
+         $user = new User();
+         $user->setDb($this->di->get("db"));
+
+        if ($user->userExists($name)) {
+             $this->form->addOutput("Already exists");
+             return false;
+        }
+
+          $user->name = $name;
+          $user->email = $email;
           $user->setPassword($password);
           $user->save();
 
-          $this->form->addOutput("User was created.");
-          return true;
+          $this->di->get('session')->set("user", $name); # set user in session
+          $this->di->get("response")->redirect("user/profile");
     }
 }

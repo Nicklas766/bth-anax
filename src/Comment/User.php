@@ -109,20 +109,6 @@ class User extends Connect
     }
 
 
-
-    /**
-     * Logout user by setting "user" == null in session.
-     *
-     *
-     * @return void
-     */
-    public function logout()
-    {
-        $this->di->get('session')->set("user", null);
-    }
-
-
-
     /**
      * Check if user exists
      *

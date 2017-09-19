@@ -4,10 +4,8 @@
 
         <h1> Skapa en kommentar </h1>
         <div class='login-widget'>
-            <form action="<?=$app->link('comment/create')?>" method="post">
-                 <textarea style="border:1px solid;" type="text" placeholder="comment" name="comment"></textarea>
-                 <button type="submit">Skicka</button>
-            </form>
+
+            <?= $form ?>
         </div>
 
         <div style="width:100%; margin-bottom:200px;" />

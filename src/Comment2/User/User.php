@@ -24,7 +24,33 @@ class User extends ActiveRecordModel
     public $name;
     public $email;
     public $pass;
-    public $authority;
+    public $authority = "user";
+
+
+    /**
+     * Check if user exists
+     *
+     * @param string $name
+     *
+     * @return boolean true if user exists in database else false
+     */
+    public function userExists($name)
+    {
+        $user = $this->find("name", $name);
+        return !$user ? false : true;
+    }
+    /**
+     * Returns gravatar link
+     *
+     * @param string $email
+     *
+     * @return string as gravatar link
+     */
+    public function setGravatar()
+    {
+        $this->img = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "&s=" . 40;
+    }
+
 
     /**
      * Set the pass.
