@@ -1,11 +1,11 @@
 <?php
 
-namespace Nicklas\Comment2\User\HTMLForm;
+namespace Nicklas\Comment2\HTMLForm;
 
 use \Anax\HTMLForm\FormModel;
 use \Anax\DI\DIInterface;
-use \Nicklas\Comment2\User\User;
-use \Nicklas\Comment2\User\Comment;
+use \Nicklas\Comment2\User;
+use \Nicklas\Comment2\Comment;
 
 /**
  * Form to update an item.

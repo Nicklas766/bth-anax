@@ -1,15 +1,15 @@
 <?php
 
-namespace Nicklas\Comment2\User\HTMLForm;
+namespace Nicklas\Comment2\HTMLForm;
 
 use \Anax\HTMLForm\FormModel;
 use \Anax\DI\DIInterface;
-use \Nicklas\Comment2\User\User;
+use \Nicklas\Comment2\User;
 
 /**
  * Example of FormModel implementation.
  */
-class CreateUserForm extends FormModel
+class CreateUserForm2 extends FormModel
 {
     /**
      * Constructor injects with DI container.
@@ -23,6 +23,7 @@ class CreateUserForm extends FormModel
             [
                 "id" => __CLASS__,
                 "legend" => "Create user",
+                "fieldset" => true
             ],
             [
                 "name" => [
@@ -44,6 +45,12 @@ class CreateUserForm extends FormModel
                     "validation" => [
                         "match" => "password"
                     ],
+                ],
+
+                "select" => [
+                    "type"        => "select",
+                    "label"       => "Select authority",
+                    "options"     => ["admin" => "admin", "user" => "user"],
                 ],
 
                 "submit" => [
@@ -87,16 +94,17 @@ class CreateUserForm extends FormModel
          $user->setDb($this->di->get("db"));
 
         if ($user->userExists($name)) {
-             $this->form->addOutput("Already exists");
+             $this->form->addOutput("User already exists");
              return false;
         }
 
           $user->name = $name;
           $user->email = $email;
+          $user->authority = $this->form->value("select");
           $user->setPassword($password);
           $user->save();
 
-          $this->di->get('session')->set("user", $name); # set user in session
-          $this->di->get("response")->redirect("user/profile");
+          $this->form->addOutput("You added the user");
+          return true;
     }
 }

@@ -15,9 +15,9 @@
 
 
 return [
-    "dsn"             => "mysql:host=localhost;dbname=anaxdb;",
-    "username"        => "anax",
-    "password"        => "anax",
+    "dsn"             => "mysql:host=blu-ray.student.bth.se;dbname=nien16;",
+    "username"        => "nien16",
+    "password"        => "J9c84xWzsF5o",
     "driver_options"  => [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"],
     "fetch_mode"      => \PDO::FETCH_OBJ,
     "table_prefix"    => null,

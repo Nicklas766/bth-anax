@@ -1,6 +1,6 @@
 <?php
 
-namespace Nicklas\Comment2\User;
+namespace Nicklas\Comment2;
 
 /**
  * Extends the UserController, for comments

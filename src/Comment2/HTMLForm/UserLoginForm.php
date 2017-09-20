@@ -1,10 +1,10 @@
 <?php
 
-namespace Nicklas\Comment2\User\HTMLForm;
+namespace Nicklas\Comment2\HTMLForm;
 
 use \Anax\HTMLForm\FormModel;
 use \Anax\DI\DIInterface;
-use \Nicklas\Comment2\User\User;
+use \Nicklas\Comment2\User;
 
 /**
  * Example of FormModel implementation.
@@ -23,6 +23,8 @@ class UserLoginForm extends FormModel
         $this->form->create(
             [
                 "id" => __CLASS__,
+                "br-after-label" => false,
+                "use_fieldset" => false,
             ],
             [
                 "user" => [

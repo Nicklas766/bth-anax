@@ -134,58 +134,20 @@ return [
                 return $rem;
             }
         ],
-        // "comment" => [
-        //     "shared" => true,
-        //     "callback" => function () {
-        //         $comment = new \Nicklas\Comment\Comment();
-        //         $comment->setDI($this);
-        //         return $comment;
-        //     }
-        // ],
-        // "commentController" => [
-        //     "shared" => false,
-        //     "callback" => function () {
-        //         $commentController = new \Nicklas\Comment\CommentController();
-        //         $commentController->setDI($this);
-        //         return $commentController;
-        //     }
-        // ],
-        // "user" => [
-        //     "shared" => true,
-        //     "callback" => function () {
-        //         $user = new \Nicklas\Comment\User();
-        //         $user->setDI($this);
-        //         return $user;
-        //     }
-        // ],
-        // "userController" => [
-        //     "shared" => false,
-        //     "callback" => function () {
-        //         $userController = new \Nicklas\Comment\UserController();
-        //         $userController->setDI($this);
-        //         return $userController;
-        //     }
-        // ],
-        // "userActionController" => [
-        //     "shared" => false,
-        //     "callback" => function () {
-        //         $userActionController = new \Nicklas\Comment\UserActionController();
-        //         $userActionController->setDI($this);
-        //         return $userActionController;
-        //     }
-        // ],
-        // "adminController" => [
-        //     "shared" => false,
-        //     "callback" => function () {
-        //         $adminController = new \Nicklas\Comment\AdminController();
-        //         $adminController->setDI($this);
-        //         return $adminController;
-        //     }
-        // ],
+
+        "activeRecordModelExtender" => [
+            "shared" => false,
+            "callback" => function () {
+                $obj = new \Nicklas\Comment2\ActiveRecordModelExtender();
+                $obj->setDI($this);
+                return $obj;
+            }
+        ],
+
         "commentFrontController" => [
             "shared" => true,
             "callback" => function () {
-                $obj = new \Nicklas\Comment2\User\FrontController();
+                $obj = new \Nicklas\Comment2\FrontController();
                 $obj->setDI($this);
                 return $obj;
             }

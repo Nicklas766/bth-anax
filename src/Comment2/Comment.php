@@ -1,16 +1,12 @@
 <?php
 
-namespace Nicklas\Comment2\User;
-
-use \Anax\Database\ActiveRecordModel;
-use \Nicklas\Comment2\User\User;
+namespace Nicklas\Comment2;
 
 /**
  * A database driven model.
  */
-class Comment extends ActiveRecordModel
+class Comment extends ActiveRecordModelExtender
 {
-    use ParserTrait;
 
     /**
      * Constructor injects with DI container.
@@ -53,7 +49,7 @@ class Comment extends ActiveRecordModel
             $user->find("name", $comment->user);
 
             $comment->img = $this->gravatar($user->email);
-            $comment->markdown = $this->di->get("textfilter")->parse($comment->comment, ["yamlfrontmatter", "shortcode", "markdown", "titlefromheader"])->text;
+            $comment->markdown = $this->getMD($comment->comment);
 
             return $comment;
         }, $comments);
@@ -68,7 +64,7 @@ class Comment extends ActiveRecordModel
     public function get($id)
     {
         $comment = $this->find("id", $id);
-        $comment->markdown = $this->di->get("textfilter")->parse($comment->comment, ["yamlfrontmatter", "shortcode", "markdown", "titlefromheader"])->text;
+        $comment->markdown = $this->getMD($comment->comment);
         return $comment;
     }
 

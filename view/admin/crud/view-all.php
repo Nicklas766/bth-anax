@@ -11,11 +11,11 @@
         </tr>
         <?php foreach ($users as $user) : ?>
              <tr>
-                 <td><img src="<?= $user["img"] ?>" style="height:100px; width:100%;"></td>
-                 <td><?= $user["name"] ?></td>
-                 <td><?= $user["email"] ?></td>
-                 <td><?= $user["authority"] ?></td>
-                 <td><a href='<?= $app->link("admin/users/$user[name]") ?>'>Edit </a></td>
+                 <td><img src="<?= $user->img ?>" style="height:100px; width:100%;"></td>
+                 <td><?= $user->name ?></td>
+                 <td><?= $user->email ?></td>
+                 <td><?= $user->authority ?></td>
+                 <td><a href='<?= $app->link("admin/user/$user->id") ?>'>Edit </a></td>
             </tr>
         <?php endforeach; ?>
     </table>

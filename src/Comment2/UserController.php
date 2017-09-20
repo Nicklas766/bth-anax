@@ -1,14 +1,14 @@
 <?php
 
-namespace Nicklas\Comment2\User;
+namespace Nicklas\Comment2;
 
 use \Anax\Configure\ConfigureInterface;
 use \Anax\Configure\ConfigureTrait;
 use \Anax\DI\InjectionAwareInterface;
 use \Anax\Di\InjectionAwareTrait;
-use \Nicklas\Comment2\User\HTMLForm\UserLoginForm;
-use \Nicklas\Comment2\User\HTMLForm\CreateUserForm;
-use \Nicklas\Comment2\User\HTMLForm\EditProfileForm;
+use \Nicklas\Comment2\HTMLForm\UserLoginForm;
+use \Nicklas\Comment2\HTMLForm\CreateUserForm;
+use \Nicklas\Comment2\HTMLForm\EditProfileForm;
 
 /**
  * A controller class.
@@ -177,7 +177,7 @@ class UserController implements
 
         if ($user->authority == "admin") {
             $views = [
-                ["user/admin/navbar", [], "main"],
+                ["admin/navbar", [], "main"],
                 ["user/profile/profile", ["user" => $user], "main"]
             ];
         }

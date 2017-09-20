@@ -1,42 +1,39 @@
 <?php
 
-namespace Nicklas\Comment2\User\HTMLForm;
+namespace Nicklas\Comment2\HTMLForm;
 
 use \Anax\HTMLForm\FormModel;
 use \Anax\DI\DIInterface;
-use \Nicklas\Comment2\User\User;
+use \Nicklas\Comment2\User;
+use \Nicklas\Comment2\Comment;
 
 /**
  * Example of FormModel implementation.
  */
-class EditProfileForm extends FormModel
+class CreateCommentForm extends FormModel
 {
     /**
      * Constructor injects with DI container.
      *
      * @param Anax\DI\DIInterface $di a service container
      */
-    public function __construct(DIInterface $di, $name)
+    public function __construct(DIInterface $di)
     {
         parent::__construct($di);
-        $user = new User();
-        $user->setDb($this->di->get("db"));
-        $user->find("name", $name);
         $this->form->create(
             [
                 "id" => __CLASS__,
-                "class" => "login-widget"
             ],
             [
-
-                "email" => [
-                    "type"        => "text",
-                    "value" => $user->email,
+                "comment" => [
+                    "type"        => "textarea",
+                    "label" => false,
+                    "placeholder" => "Comment here"
                 ],
 
                 "submit" => [
                     "type" => "submit",
-                    "value" => "Update profile",
+                    "value" => "Skicka",
                     "callback" => [$this, "callbackSubmit"]
                 ],
             ]
@@ -54,20 +51,21 @@ class EditProfileForm extends FormModel
     public function callbackSubmit()
     {
         // Get values from the submitted form
-        $email       = $this->form->value("email");
+        $sentComment       = $this->form->value("comment");
 
-        if (strpos($email, '%') !== false) {
-            $this->form->addOutput("% is not allowed");
+        $comment = new Comment();
+        $comment->setDb($this->di->get("db"));
+
+        if (!$this->di->get('session')->has("user")) {
+            $this->form->addOutput("You need to log in");
             return false;
         }
 
-          $name = $this->di->get('session')->get("user");
-          $user = new User();
-          $user->setDb($this->di->get("db"));
-          $user->find("name", $name);
+        $user = $this->di->get('session')->get("user"); # get user name
 
-          $user->email = $email;
-          $user->save();
-          return true;
+        $comment->user = $user;
+        $comment->comment = $sentComment;
+        $comment->save();
+        return true;
     }
 }

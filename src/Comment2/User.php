@@ -1,13 +1,11 @@
 <?php
 
-namespace Nicklas\Comment2\User;
-
-use \Anax\Database\ActiveRecordModel;
+namespace Nicklas\Comment2;
 
 /**
  * A database driven model.
  */
-class User extends ActiveRecordModel
+class User extends ActiveRecordModelExtender
 {
 
         /**
@@ -48,7 +46,7 @@ class User extends ActiveRecordModel
      */
     public function setGravatar()
     {
-        $this->img = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "&s=" . 40;
+        $this->img = $this->gravatar($this->email);
     }
 
 

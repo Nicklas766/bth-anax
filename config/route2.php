@@ -53,6 +53,11 @@ return [
             "file" => __DIR__ . "/route2/comment2/comment.php",
         ],
         [
+            // Routers for the user parts mounts on user/
+            "mount" => "admin",
+            "file" => __DIR__ . "/route2/comment2/admin.php",
+        ],
+        [
             // Add routes from bookController and mount on book/
             "mount" => "book",
             "file" => __DIR__ . "/route2/bookController.php",

@@ -1,17 +1,15 @@
 <?php
 
-namespace Nicklas\Comment2\User;
+namespace Nicklas\Comment2;
 
-use \Nicklas\Comment2\User\HTMLForm\CreateCommentForm;
-use \Nicklas\Comment2\User\HTMLForm\EditCommentForm;
+use \Nicklas\Comment2\HTMLForm\CreateCommentForm;
+use \Nicklas\Comment2\HTMLForm\EditCommentForm;
 
 /**
  * Extends the UserController, for comments
  */
-class CommentController extends UserController
+class CommentController extends AdminController
 {
-
-
 
 
     /**

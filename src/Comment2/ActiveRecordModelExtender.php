@@ -1,12 +1,14 @@
 <?php
 
-namespace Nicklas\Comment2\User;
+namespace Nicklas\Comment2;
+
+use \Anax\Database\ActiveRecordModel;
+use \Nicklas\Comment2;
 
 /**
- * Trait implementing reading from config-file and storing options in
- * $this->config.
+ * A database driven model.
  */
-trait ParserTrait
+class ActiveRecordModelExtender extends ActiveRecordModel
 {
     /**
      * Returns gravatar link
@@ -27,8 +29,8 @@ trait ParserTrait
      *
      * @return string as parsed markdown
      */
-    // public function getMD($content)
-    // {
-    //     return $this->di->get('textfilter')->parse($content, ["yamlfrontmatter", "shortcode", "markdown", "titlefromheader"])->text;
-    // }
+    public function getMD($content)
+    {
+        return $this->di->get('textfilter')->parse($content, ["yamlfrontmatter", "shortcode", "markdown", "titlefromheader"])->text;
+    }
 }

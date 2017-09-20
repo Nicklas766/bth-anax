@@ -32,7 +32,7 @@ $urlToDelete = url("book/delete");
 </div>
 <?php
     return;
-    endif;
+endif;
 ?>
 
     <table style="margin:auto;">
