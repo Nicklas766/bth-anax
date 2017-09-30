@@ -5,46 +5,28 @@
 return [
     "routes" => [
         [
-            "info" => "Renders page for all comments",
+            "info" => "Check if user is admin on all /admin/ routes",
             "requestMethod" => null,
-            "path" => null,
-            "callable" => ["adminController", "controlAdmin"]
+            "path" => "**",
+            "callable" => ["commentFrontController", "checkIsAdmin"]
         ],
         [
-            "info" => "Renders page for all comments",
-            "requestMethod" => "get",
-            "path" => "users",
-            "callable" => ["adminController", "renderUsersPage"]
+            "info" => "Show table of users",
+            "requestMethod" => null,
+            "path" => "user",
+            "callable" => ["commentFrontController", "getUsersIndex"]
         ],
         [
-            "info" => "Renders page for all comments",
-            "requestMethod" => "get",
-            "path" => "users/{dataset:alphanum}",
-            "callable" => ["adminController", "renderUserPage"]
+            "info" => "Edit users",
+            "requestMethod" => "get|post",
+            "path" => "user/{id:digit}",
+            "callable" => ["commentFrontController", "getPostAdminEditUser"]
         ],
         [
-            "info" => "Renders page for all comments",
-            "requestMethod" => "post",
-            "path" => "users/{dataset:alphanum}",
-            "callable" => ["adminController", "updateProfile"]
-        ],
-        [
-            "info" => "Renders page create user",
-            "requestMethod" => "get",
-            "path" => "create",
-            "callable" => ["adminController", "renderCreatePage"]
-        ],
-        [
-            "info" => "post for create user",
-            "requestMethod" => "post",
-            "path" => "create",
-            "callable" => ["adminController", "createUser"]
-        ],
-        [
-            "info" => "post for create user",
-            "requestMethod" => "get",
-            "path" => "user/delete/{dataset:alphanum}",
-            "callable" => ["adminController", "deleteUser"]
+            "info" => "Create users",
+            "requestMethod" => "get|post",
+            "path" => "user/create",
+            "callable" => ["commentFrontController", "getPostAdminCreateUser"]
         ],
     ]
 ];

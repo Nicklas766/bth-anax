@@ -1,69 +1,44 @@
 <?php
 /**
- * Routes for the userController
+ * Routes for user controller.
  */
 return [
     "routes" => [
         [
-            "info" => "Renders page for login",
+            "info" => "User Controller index.",
             "requestMethod" => "get",
-            "path" => "login",
-            "callable" => ["userController", "renderLogin"]
+            "path" => "",
+            "callable" => ["commentFrontController", "getIndex"],
         ],
         [
-            "info" => "Logins user",
-            "requestMethod" => "post",
+            "info" => "Login a user.",
+            "requestMethod" => "get|post",
             "path" => "login",
-            "callable" => ["userActionController", "login"]
+            "callable" => ["commentFrontController", "getPostLogin"],
         ],
         [
-            "info" => "Logouts user",
+            "info" => "Create a user.",
+            "requestMethod" => "get|post",
+            "path" => "create",
+            "callable" => ["commentFrontController", "getPostCreateUser"],
+        ],
+        [
+            "info" => "Logout a user",
             "requestMethod" => "get",
             "path" => "logout",
-            "callable" => ["userActionController", "logout"]
+            "callable" => ["commentFrontController", "logout"],
         ],
         [
-            "info" => "Renders page for create form",
-            "requestMethod" => "get",
-            "path" => "create",
-            "callable" => ["userController", "renderCreateUser"]
-        ],
-        [
-            "info" => "Creates a new user",
-            "requestMethod" => "post",
-            "path" => "create",
-            "callable" => ["userActionController", "createUser"]
-        ],
-        // --------------------- PROFILE --------------------------------------
-        [
-            "info" => "Control if user is logged in",
+            "info" => "Render a profilepage",
             "requestMethod" => null,
             "path" => "profile",
-            "callable" => ["userActionController", "checkLogin"]
+            "callable" => ["commentFrontController", "renderProfile"],
         ],
         [
-            "info" => "Render page for profile",
-            "requestMethod" => "get",
-            "path" => "profile",
-            "callable" => ["userController", "renderProfile"]
-        ],
-        [
-            "info" => "Render page for edit profile",
-            "requestMethod" => "get",
-            "path" => "profile/edit",
-            "callable" => ["userController", "renderEditProfile"]
-        ],
-        [
-            "info" => "Edit the profile",
-            "requestMethod" => "post",
-            "path" => "profile/edit",
-            "callable" => ["userActionController", "editProfile"]
-        ],
-        [
-            "info" => "Route for fail creation or login",
-            "requestMethod" => "get",
-            "path" => "fail",
-            "callable" => ["userController", "renderFail"]
+            "info" => "Edit a user.",
+            "requestMethod" => "get|post",
+            "path" => "edit",
+            "callable" => ["commentFrontController", "getPostEditUser"],
         ],
     ]
 ];

@@ -22,40 +22,24 @@ return [
             "file" => __DIR__ . "/route2/remserver.php",
         ],
         [
+            // Routers for the user parts mounts on user/
+            "mount" => "user",
+            "file" => __DIR__ . "/route2/comment/user.php",
+        ],
+        [
+            // Routers for the user parts mounts on comment/
+            "mount" => "comment",
+            "file" => __DIR__ . "/route2/comment/comment.php",
+        ],
+        [
+            // Routers for the user parts mounts on admin/
+            "mount" => "admin",
+            "file" => __DIR__ . "/route2/comment/admin.php",
+        ],
+        [
             // Routers for the reports
             "mount" => "report",
             "file" => __DIR__ . "/route2/report.php",
-        ],
-        // [
-        //     // Routers for the comment mounts on comment/
-        //     "mount" => "comment",
-        //     "file" => __DIR__ . "/route2/comment/comment.php",
-        // ],
-        // [
-        //     // Routers for the user parts mounts on user/
-        //     "mount" => "user",
-        //     "file" => __DIR__ . "/route2/comment/user.php",
-        // ],
-        // [
-        //     // Routers for the admin parts mounts on admin/
-        //     "mount" => "admin",
-        //     "file" => __DIR__ . "/route2/comment/admin.php",
-        // ],
-
-        [
-            // Routers for the user parts mounts on user/
-            "mount" => "user",
-            "file" => __DIR__ . "/route2/comment2/userController.php",
-        ],
-        [
-            // Routers for the user parts mounts on user/
-            "mount" => "comment",
-            "file" => __DIR__ . "/route2/comment2/comment.php",
-        ],
-        [
-            // Routers for the user parts mounts on user/
-            "mount" => "admin",
-            "file" => __DIR__ . "/route2/comment2/admin.php",
         ],
         [
             // Add routes from bookController and mount on book/

@@ -112,7 +112,7 @@ return [
         "pageRender" => [
             "shared" => true,
             "callback" => function () {
-                $obj = new \Anax\Page\PageRender();
+                $obj = new \Nicklas\Page\PageRender();
                 $obj->setDI($this);
                 return $obj;
             }
@@ -134,11 +134,10 @@ return [
                 return $rem;
             }
         ],
-
         "activeRecordModelExtender" => [
             "shared" => false,
             "callback" => function () {
-                $obj = new \Nicklas\Comment2\ActiveRecordModelExtender();
+                $obj = new \Nicklas\Comment\ActiveRecordModelExtender();
                 $obj->setDI($this);
                 return $obj;
             }
@@ -147,7 +146,15 @@ return [
         "commentFrontController" => [
             "shared" => true,
             "callback" => function () {
-                $obj = new \Nicklas\Comment2\FrontController();
+                $obj = new \Nicklas\Comment\FrontController();
+                $obj->setDI($this);
+                return $obj;
+            }
+        ],
+        "pageRenderComment" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Nicklas\Page\PageRender();
                 $obj->setDI($this);
                 return $obj;
             }
