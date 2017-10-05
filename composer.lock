@@ -450,16 +450,16 @@
         },
         {
             "name": "anax/session",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/session.git",
-                "reference": "7dd0c410f85f3501c97069c874179bc8b7a9065d"
+                "reference": "a55a474c1bba4759b79db3822cd5b7dcd67c055b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/session/zipball/7dd0c410f85f3501c97069c874179bc8b7a9065d",
-                "reference": "7dd0c410f85f3501c97069c874179bc8b7a9065d",
+                "url": "https://api.github.com/repos/canax/session/zipball/a55a474c1bba4759b79db3822cd5b7dcd67c055b",
+                "reference": "a55a474c1bba4759b79db3822cd5b7dcd67c055b",
                 "shasum": ""
             },
             "require": {
@@ -498,20 +498,20 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-08-17T15:52:40+00:00"
+            "time": "2017-10-02T15:54:22+00:00"
         },
         {
             "name": "anax/textfilter",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/textfilter.git",
-                "reference": "16999dc137d005f332e71459802f44310309f7f1"
+                "reference": "0fe7b6839a86a2256d22b7f59d10ee92663f89f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/textfilter/zipball/16999dc137d005f332e71459802f44310309f7f1",
-                "reference": "16999dc137d005f332e71459802f44310309f7f1",
+                "url": "https://api.github.com/repos/canax/textfilter/zipball/0fe7b6839a86a2256d22b7f59d10ee92663f89f1",
+                "reference": "0fe7b6839a86a2256d22b7f59d10ee92663f89f1",
                 "shasum": ""
             },
             "require": {
@@ -552,7 +552,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-08-03T08:24:17+00:00"
+            "time": "2017-10-02T10:25:31+00:00"
         },
         {
             "name": "anax/url",
@@ -868,16 +868,16 @@
         },
         {
             "name": "nicklas/comment",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nicklas766/Comment.git",
-                "reference": "a9d6002c52aa23f7bb4714d357c0cb4b3c10d0f2"
+                "reference": "086d7c605efc27f539d37bfba989368557f0000d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nicklas766/Comment/zipball/a9d6002c52aa23f7bb4714d357c0cb4b3c10d0f2",
-                "reference": "a9d6002c52aa23f7bb4714d357c0cb4b3c10d0f2",
+                "url": "https://api.github.com/repos/Nicklas766/Comment/zipball/086d7c605efc27f539d37bfba989368557f0000d",
+                "reference": "086d7c605efc27f539d37bfba989368557f0000d",
                 "shasum": ""
             },
             "require": {
@@ -923,7 +923,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-09-29T20:45:13+00:00"
+            "time": "2017-10-05T09:10:00+00:00"
         },
         {
             "name": "scrivo/highlight.php",
